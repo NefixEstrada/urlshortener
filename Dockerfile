@@ -11,19 +11,22 @@
 FROM golang:1.11 as build
 
 # Download the URL Shortener
-RUN go get -d -v gitea.nefixestrada.com/nefix/urlshortener
+WORKDIR /go/src/gitea.nefixestrada.com/nefix
+RUN git clone https://gitea.nefixestrada.com/nefix/urlshortener
 
 # Move to the correct directory
 WORKDIR /go/src/gitea.nefixestrada.com/nefix/urlshortener
 
 # Download all the dependencies
-RUN go get -d -v
+RUN go get -d -v ./...
+RUN go get github.com/alecthomas/gometalinter && gometalinter --install
+RUN go get github.com/GeertJohan/go.rice/rice
 
 # Compile the binary
 RUN make
 
 # Create the user
-RUN adduser -D -g '' app
+RUN adduser --disabled-password --gecos '' app
 
 #
 # Base stage
@@ -36,13 +39,22 @@ FROM alpine:3.8
 COPY --from=build /etc/passwd /etc/passwd
 
 # Copy the compiled binary from the build stage
-COPY --from=build /go/src/gitea.nefixestrada.com/nefix/urlshortener/urlshortener /srv
+COPY --from=build /go/src/gitea.nefixestrada.com/nefix/urlshortener/urlshortener /app/urlshortener
+
+# Move to the correct directory
+WORKDIR /data
+
+# Change the directory permissions
+RUN chown app /data
 
 # Use the 'app' user
 USER app
+
+# Expose the volume
+VOLUME [ "/data" ]
 
 # Expose the required port
 EXPOSE 3000
 
 # Run the service
-CMD [ "/srv/urlshortener" ]
+CMD [ "/app/urlshortener" ]
