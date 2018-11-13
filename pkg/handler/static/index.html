@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Néfix Estrada's URL shortener</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Voltaire" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <h1>Welcome to Néfix Estrada's URL shortener!</h1>
+        <p>In order to add an URL, fill the following form:</p>
+
+        <form id="form" action="/" method="post" autocomplete="off">
+            <input type="text" name="shortURL" placeholder="/<something>">
+            <input type="text" name="longURL" placeholder="Redirect to...">
+        </form>
+
+        <button type="submit" form="form">Add...</button>
+    </div>
+
+    <style>
+        * {
+            /* Position */
+            margin: 0;
+            padding: 0;
+
+            /* Visual */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .content {
+            /* Size */
+            height: 100vh;
+            width: 100vw;
+
+            /* Flex */
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            /* Size */
+            font-size: 3rem;
+
+            /* Position */
+            margin-bottom: 0.5em;
+
+            /* Visual */
+            font-family: 'Voltaire', sans-serif;
+        }
+
+        p {
+            /* Size */
+            font-size: 1.25rem;
+
+            /* Position */
+            margin-bottom: 1.25em;
+        }
+
+        input[type='text'] {
+            /* Position */
+            margin: 0.5em;
+            padding: 0.65em;
+
+            /* Visual */
+            background: transparent;
+            color: #000;
+            border: 2px solid #000;
+        }
+
+        button {
+            /* Size */
+            width: 125px;
+
+            /* Position */
+            position: relative;
+            margin-top: 1.25em;
+            padding: 0.75em;
+            
+            /* Visual */
+            font-weight: 700;
+            color: #000;
+            background: transparent;
+            border: 1px solid #000;
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            /* Visual */
+            color: #ecface;
+            border: 1px solid #554d68;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+
+        button::after {
+            /* Size */
+            height: 120%;
+            width: 0;
+            
+            /* Position */
+            position: absolute;
+            left: -10%;
+            bottom: -1px;
+            z-index: -1;
+
+            /* Visual */
+            background: #554d68;
+            content: '';
+            transition: 0.3s;
+            transform: skewX(15deg);
+        }
+
+        button:hover::after {
+            /* Size */
+            width: 120%;
+
+            /* Position */
+            left: -10%;
+        }
+        </style>
+</body>
+</html>
