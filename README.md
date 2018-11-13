@@ -10,7 +10,7 @@ The program is written in [Go](https://golang.org). For database, it's using [bb
 
 In order to run URL Shortener, you have two options:
 
-### Inside a Docker
+### Inside a Docker [recommended]
 
 You can easily run URL Shortener inside a Docker container. It's the recommended choice. You just need to download it from Docker Hub:
 
