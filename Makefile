@@ -12,9 +12,10 @@ test: lint
 	go test ./...
 
 .PHONY: lint
-lint: $(GOMETALINTER)
+lint: gometalinter
 	gometalinter ./...
 
-$(GOMETALINTER):
+.PHONY: gometalinter
+gometalinter:
 	go get github.com/alecthomas/gometalinter
 	gometalinter --install &> /dev/null
