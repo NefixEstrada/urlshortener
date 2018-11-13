@@ -1,6 +1,6 @@
 # URL Shortener
 
-This is a simple URL shortener
+This is a simple URL shortener. You can visit it live at [https://short.nefixestrada.com](https://short.nefixestrada.com)
 
 ## Tech stack
 
@@ -49,6 +49,7 @@ services:
         published: 8080
         protocol: tcp
         mode: host
+    restart: always
     image: nefix/urlshortener:1
 
 volumes:
