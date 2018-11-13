@@ -72,11 +72,8 @@ func TestReadURLNotFound(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}
@@ -112,11 +109,8 @@ func TestAddURL(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}
@@ -146,11 +140,8 @@ func TestAddURLShortNoEmpty(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}
@@ -182,11 +173,8 @@ func TestAddURLLongNoEmpty(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}
@@ -218,11 +206,8 @@ func TestAddURLLongIsURL(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}
@@ -320,11 +305,8 @@ func TestAddURLErrInserting(t *testing.T) {
 
 		if err = boltDB.Update(func(tx *bolt.Tx) error {
 			_, err = tx.CreateBucket([]byte("urls"))
-			if err != nil {
-				return err
-			}
 
-			return nil
+			return err
 		}); err != nil {
 			t.Fatalf("error inserting test data to the DB: %v", err)
 		}

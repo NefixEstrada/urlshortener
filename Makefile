@@ -12,10 +12,5 @@ test: lint
 	go test ./...
 
 .PHONY: lint
-lint: gometalinter
+lint:
 	gometalinter ./...
-
-.PHONY: gometalinter
-gometalinter:
-	go get github.com/alecthomas/gometalinter
-	gometalinter --install &> /dev/null

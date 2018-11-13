@@ -44,7 +44,7 @@ func (d *DB) AddURL(shortURL string, longURL string) error {
 		return errors.New("the long URL needs to be a valid URL")
 	}
 
-	if err := d.DB.Update(func(tx *bolt.Tx) error {
+	return d.DB.Update(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte("urls"))
 		if b == nil {
 			return errors.New("the bucket urls doesn't exist")
@@ -59,22 +59,14 @@ func (d *DB) AddURL(shortURL string, longURL string) error {
 		}
 
 		return nil
-	}); err != nil {
-		return err
-	}
-
-	return nil
+	})
 }
 
 // Initialize creates the required bucket
 func (d *DB) Initialize() error {
-	if err := d.DB.Update(func(tx *bolt.Tx) error {
+	return d.DB.Update(func(tx *bolt.Tx) error {
 		_, err := tx.CreateBucketIfNotExists([]byte("urls"))
 
 		return err
-	}); err != nil {
-		return err
-	}
-
-	return nil
+	})
 }
