@@ -15,7 +15,7 @@ In order to run URL Shortener, you have two options:
 You can easily run URL Shortener inside a Docker container. It's the recommended choice. You just need to download it from Docker Hub:
 
 ```sh
-sudo docker pull nefix/urlshortener
+sudo docker pull nefix/urlshortener:1
 sudo docker run -p 3000:3000 nefix/urlshortener
 ```
 
