@@ -13,4 +13,4 @@ test: lint
 
 .PHONY: lint
 lint:
-	gometalinter ./...
+	gometalinter ./... --deadline=100s
